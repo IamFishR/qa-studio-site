@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     template: "%s · QA Studio Pro",
   },
   description:
-    "Local-first Chrome extension for record and replay QA flows. No account, no server, no AI.",
+    "Local-first Chrome extension for modular QA journeys — one flow per journey, folders as feature suites. No account, no server, no AI.",
 };
 
 export default function RootLayout({

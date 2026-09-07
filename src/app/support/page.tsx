@@ -19,6 +19,10 @@ const faqs = [
     q: "Is anything sent to a server?",
     a: "No. QA Studio Pro is local-only. Recordings, variables, and run history stay on your device. There is no account and no cloud sync.",
   },
+  {
+    q: "Should I record my whole checkout as one flow?",
+    a: "Prefer one flow per journey — login, payment, a config change — then put them in a folder and run them in order as a feature suite. Use environments or variables for the same flow under different configs.",
+  },
 ];
 
 export default function SupportPage() {

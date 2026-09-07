@@ -2,24 +2,24 @@ import Link from "next/link";
 
 const features = [
   {
-    title: "Record",
-    body: "Capture clicks, typing, and navigation on the start tab and its opener lineage.",
+    title: "Journeys",
+    body: "Record one flow per user journey — login, payment, a config change — not one giant recording.",
   },
   {
-    title: "Replay",
-    body: "Run recorded flows locally with clear step status and failure screenshots.",
+    title: "Folders",
+    body: "Group related flows and run them in order as a feature suite (login, then payment). Fail-fast select-and-run.",
   },
   {
-    title: "Variables",
-    body: "Mask sensitive fields by default and reuse values as {VAR} placeholders.",
+    title: "Environments",
+    body: "Reuse the same flow with different variables or environments — payment × staging vs prod, or alternate configs.",
   },
   {
-    title: "Export",
-    body: "Take your flows with you — keep them on-device, share as you choose.",
+    title: "Record & replay",
+    body: "Capture clicks, typing, and navigation; replay locally with clear step status and failure screenshots.",
   },
   {
     title: "Privacy",
-    body: "No account. No server. No telemetry. No AI. Everything stays in your browser.",
+    body: "No account. No server. No telemetry. No AI in v1. Everything stays in your browser.",
   },
 ];
 
@@ -34,8 +34,9 @@ export default function HomePage() {
           QA Studio Pro
         </h1>
         <p className="mt-5 max-w-xl text-lg leading-relaxed text-zinc-400">
-          Local-first record and replay for QA flows. Capture once, run again —
-          entirely on your machine. No account, no server, no AI.
+          Local-first record and replay. Build QA as modular journeys — separate
+          flows you compose into feature suites — entirely on your machine. No
+          account, no server, no AI.
         </p>
         <div className="mt-10 flex flex-wrap gap-3">
           <Link
@@ -71,7 +72,8 @@ export default function HomePage() {
         <p className="max-w-xl text-sm leading-relaxed text-zinc-500">
           QA Studio Pro is a Chrome extension. Your recordings, variables, and
           run history live in local storage on your device. Nothing is sent to
-          us.
+          us. AI healing, paid plans, and cloud sync are post-v1 — not part of
+          this local release.
         </p>
       </section>
     </div>
