@@ -1,25 +1,42 @@
 import Link from "next/link";
+import type { LucideIcon } from "lucide-react";
+import {
+  FolderOpen,
+  Layers,
+  Radio,
+  Route,
+  Shield,
+} from "lucide-react";
 
-const features = [
+const features: {
+  title: string;
+  body: string;
+  icon: LucideIcon;
+}[] = [
   {
     title: "Journeys",
     body: "Record one flow per user journey — login, payment, a config change — not one giant recording.",
+    icon: Route,
   },
   {
     title: "Folders",
     body: "Group related flows and run them in order as a feature suite (login, then payment). Fail-fast select-and-run.",
+    icon: FolderOpen,
   },
   {
     title: "Environments",
     body: "Reuse the same flow with different variables or environments — payment × staging vs prod, or alternate configs.",
+    icon: Layers,
   },
   {
     title: "Record & replay",
     body: "Capture clicks, typing, and navigation; replay locally with clear step status and failure screenshots.",
+    icon: Radio,
   },
   {
     title: "Privacy",
     body: "No account. No server. No telemetry. No AI in v1. Everything stays in your browser.",
+    icon: Shield,
   },
 ];
 
@@ -59,12 +76,23 @@ export default function HomePage() {
           What it does
         </h2>
         <ul className="mt-10 space-y-10">
-          {features.map((f) => (
-            <li key={f.title} className="grid gap-2 sm:grid-cols-[140px_1fr]">
-              <span className="text-sm font-medium text-zinc-100">{f.title}</span>
-              <p className="text-sm leading-relaxed text-zinc-400">{f.body}</p>
-            </li>
-          ))}
+          {features.map((f) => {
+            const Icon = f.icon;
+            return (
+              <li
+                key={f.title}
+                className="grid gap-3 sm:grid-cols-[168px_1fr] sm:items-start"
+              >
+                <span className="flex items-center gap-2.5 text-sm font-medium text-zinc-100">
+                  <span className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-lg border border-zinc-800 bg-zinc-950 text-[#FF6A3D]">
+                    <Icon className="h-4 w-4" strokeWidth={1.75} aria-hidden />
+                  </span>
+                  {f.title}
+                </span>
+                <p className="text-sm leading-relaxed text-zinc-400">{f.body}</p>
+              </li>
+            );
+          })}
         </ul>
       </section>
 

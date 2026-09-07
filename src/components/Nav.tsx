@@ -12,8 +12,17 @@ export function Nav() {
       <div className="mx-auto flex max-w-3xl items-center justify-between px-6 py-5">
         <Link
           href="/"
-          className="text-sm font-medium tracking-tight text-zinc-100 hover:text-white"
+          className="flex items-center gap-2.5 text-sm font-medium tracking-tight text-zinc-100 hover:text-white"
         >
+          <span
+            className="inline-flex h-7 w-7 items-center justify-center rounded-md border border-zinc-800 bg-zinc-950"
+            aria-hidden
+          >
+            <svg viewBox="0 0 24 24" className="h-3.5 w-3.5" fill="none">
+              <circle cx="12" cy="12" r="6.5" stroke="#FF6A3D" strokeWidth="1.75" />
+              <circle cx="12" cy="12" r="2.25" fill="#FF6A3D" />
+            </svg>
+          </span>
           QA Studio Pro
         </Link>
         <nav className="flex items-center gap-6">

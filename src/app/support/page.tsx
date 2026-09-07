@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { CircleHelp, Mail } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Support",
@@ -37,7 +38,12 @@ export default function SupportPage() {
       </p>
 
       <section className="mt-14 space-y-8 border-t border-zinc-800/80 pt-14">
-        <h2 className="text-sm font-medium tracking-wide text-zinc-500">
+        <h2 className="flex items-center gap-2 text-sm font-medium tracking-wide text-zinc-500">
+          <CircleHelp
+            className="h-4 w-4 text-[#FF6A3D]"
+            strokeWidth={1.75}
+            aria-hidden
+          />
           FAQ
         </h2>
         <ul className="space-y-10">
@@ -51,7 +57,12 @@ export default function SupportPage() {
       </section>
 
       <section className="mt-14 space-y-3 border-t border-zinc-800/80 pt-14">
-        <h2 className="text-sm font-medium tracking-wide text-zinc-500">
+        <h2 className="flex items-center gap-2 text-sm font-medium tracking-wide text-zinc-500">
+          <Mail
+            className="h-4 w-4 text-[#FF6A3D]"
+            strokeWidth={1.75}
+            aria-hidden
+          />
           Contact
         </h2>
         <p className="text-sm text-zinc-400">

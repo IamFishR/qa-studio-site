@@ -17,6 +17,9 @@ export const metadata: Metadata = {
   },
   description:
     "Local-first Chrome extension for modular QA journeys — one flow per journey, folders as feature suites. No account, no server, no AI.",
+  icons: {
+    icon: [{ url: "/favicon.svg", type: "image/svg+xml" }],
+  },
 };
 
 export default function RootLayout({
