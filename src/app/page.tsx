@@ -1,25 +1,42 @@
 import Link from "next/link";
+import type { LucideIcon } from "lucide-react";
+import {
+  FolderOpen,
+  Layers,
+  Radio,
+  Route,
+  Shield,
+} from "lucide-react";
 
-const features = [
+const features: {
+  title: string;
+  body: string;
+  icon: LucideIcon;
+}[] = [
   {
-    title: "Record",
-    body: "Capture clicks, typing, and navigation on the start tab and its opener lineage.",
+    title: "Journeys",
+    body: "Record one flow per user journey — login, payment, a config change — not one giant recording.",
+    icon: Route,
   },
   {
-    title: "Replay",
-    body: "Run recorded flows locally with clear step status and failure screenshots.",
+    title: "Folders",
+    body: "Group related flows and run them in order as a feature suite (login, then payment). Fail-fast select-and-run.",
+    icon: FolderOpen,
   },
   {
-    title: "Variables",
-    body: "Mask sensitive fields by default and reuse values as {VAR} placeholders.",
+    title: "Environments",
+    body: "Reuse the same flow with different variables or environments — payment × staging vs prod, or alternate configs.",
+    icon: Layers,
   },
   {
-    title: "Export",
-    body: "Take your flows with you — keep them on-device, share as you choose.",
+    title: "Record & replay",
+    body: "Capture clicks, typing, and navigation; replay locally with clear step status and failure screenshots.",
+    icon: Radio,
   },
   {
     title: "Privacy",
-    body: "No account. No server. No telemetry. No AI. Everything stays in your browser.",
+    body: "No account. No server. No telemetry. No AI in v1. Everything stays in your browser.",
+    icon: Shield,
   },
 ];
 
@@ -34,8 +51,9 @@ export default function HomePage() {
           QA Studio Pro
         </h1>
         <p className="mt-5 max-w-xl text-lg leading-relaxed text-zinc-400">
-          Local-first record and replay for QA flows. Capture once, run again —
-          entirely on your machine. No account, no server, no AI.
+          Local-first record and replay. Build QA as modular journeys — separate
+          flows you compose into feature suites — entirely on your machine. No
+          account, no server, no AI.
         </p>
         <div className="mt-10 flex flex-wrap gap-3">
           <Link
@@ -58,12 +76,23 @@ export default function HomePage() {
           What it does
         </h2>
         <ul className="mt-10 space-y-10">
-          {features.map((f) => (
-            <li key={f.title} className="grid gap-2 sm:grid-cols-[140px_1fr]">
-              <span className="text-sm font-medium text-zinc-100">{f.title}</span>
-              <p className="text-sm leading-relaxed text-zinc-400">{f.body}</p>
-            </li>
-          ))}
+          {features.map((f) => {
+            const Icon = f.icon;
+            return (
+              <li
+                key={f.title}
+                className="grid gap-3 sm:grid-cols-[168px_1fr] sm:items-start"
+              >
+                <span className="flex items-center gap-2.5 text-sm font-medium text-zinc-100">
+                  <span className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-lg border border-zinc-800 bg-zinc-950 text-[#FF6A3D]">
+                    <Icon className="h-4 w-4" strokeWidth={1.75} aria-hidden />
+                  </span>
+                  {f.title}
+                </span>
+                <p className="text-sm leading-relaxed text-zinc-400">{f.body}</p>
+              </li>
+            );
+          })}
         </ul>
       </section>
 
@@ -71,7 +100,8 @@ export default function HomePage() {
         <p className="max-w-xl text-sm leading-relaxed text-zinc-500">
           QA Studio Pro is a Chrome extension. Your recordings, variables, and
           run history live in local storage on your device. Nothing is sent to
-          us.
+          us. AI healing, paid plans, and cloud sync are post-v1 — not part of
+          this local release.
         </p>
       </section>
     </div>

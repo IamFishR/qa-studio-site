@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { CircleHelp, Mail } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Support",
@@ -19,6 +20,10 @@ const faqs = [
     q: "Is anything sent to a server?",
     a: "No. QA Studio Pro is local-only. Recordings, variables, and run history stay on your device. There is no account and no cloud sync.",
   },
+  {
+    q: "Should I record my whole checkout as one flow?",
+    a: "Prefer one flow per journey — login, payment, a config change — then put them in a folder and run them in order as a feature suite. Use environments or variables for the same flow under different configs.",
+  },
 ];
 
 export default function SupportPage() {
@@ -33,7 +38,12 @@ export default function SupportPage() {
       </p>
 
       <section className="mt-14 space-y-8 border-t border-zinc-800/80 pt-14">
-        <h2 className="text-sm font-medium tracking-wide text-zinc-500">
+        <h2 className="flex items-center gap-2 text-sm font-medium tracking-wide text-zinc-500">
+          <CircleHelp
+            className="h-4 w-4 text-[#FF6A3D]"
+            strokeWidth={1.75}
+            aria-hidden
+          />
           FAQ
         </h2>
         <ul className="space-y-10">
@@ -47,7 +57,12 @@ export default function SupportPage() {
       </section>
 
       <section className="mt-14 space-y-3 border-t border-zinc-800/80 pt-14">
-        <h2 className="text-sm font-medium tracking-wide text-zinc-500">
+        <h2 className="flex items-center gap-2 text-sm font-medium tracking-wide text-zinc-500">
+          <Mail
+            className="h-4 w-4 text-[#FF6A3D]"
+            strokeWidth={1.75}
+            aria-hidden
+          />
           Contact
         </h2>
         <p className="text-sm text-zinc-400">

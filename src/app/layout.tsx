@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { Nav } from "@/components/Nav";
@@ -10,13 +10,25 @@ const inter = Inter({
   display: "swap",
 });
 
+/** Matches site background (`bg-black` / `--background`) so mobile browser chrome blends. */
+export const viewport: Viewport = {
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#000000" },
+    { media: "(prefers-color-scheme: dark)", color: "#000000" },
+  ],
+  colorScheme: "dark",
+};
+
 export const metadata: Metadata = {
   title: {
     default: "QA Studio Pro",
     template: "%s · QA Studio Pro",
   },
   description:
-    "Local-first Chrome extension for record and replay QA flows. No account, no server, no AI.",
+    "Local-first Chrome extension for modular QA journeys — one flow per journey, folders as feature suites. No account, no server, no AI.",
+  icons: {
+    icon: [{ url: "/favicon.svg", type: "image/svg+xml" }],
+  },
 };
 
 export default function RootLayout({
