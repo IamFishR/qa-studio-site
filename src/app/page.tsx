@@ -1,12 +1,17 @@
 import Link from "next/link";
 import type { LucideIcon } from "lucide-react";
 import {
+  ExternalLink,
   FolderOpen,
   Layers,
   Radio,
   Route,
   Shield,
 } from "lucide-react";
+
+/** Chrome Web Store item — live after Public publish. */
+const CHROME_WEB_STORE_URL =
+  "https://chromewebstore.google.com/detail/qa-studio-pro/gbecpdccfeemhcnecgodpljiidfdfiem";
 
 const features: {
   title: string;
@@ -56,6 +61,15 @@ export default function HomePage() {
           account, no server, no AI.
         </p>
         <div className="mt-10 flex flex-wrap gap-3">
+          <a
+            href={CHROME_WEB_STORE_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 rounded-full bg-[#FF6A3D] px-5 py-2.5 text-sm font-medium text-black transition-colors hover:bg-[#ff7d55]"
+          >
+            Add to Chrome
+            <ExternalLink className="h-3.5 w-3.5" strokeWidth={1.75} aria-hidden />
+          </a>
           <Link
             href="/privacy"
             className="inline-flex items-center rounded-full border border-zinc-700 bg-zinc-950 px-5 py-2.5 text-sm font-medium text-zinc-100 transition-colors hover:border-zinc-500 hover:bg-zinc-900"
@@ -69,6 +83,9 @@ export default function HomePage() {
             Support →
           </Link>
         </div>
+        <p className="mt-4 text-xs text-zinc-600">
+          Listing goes live when the Chrome Web Store publish completes.
+        </p>
       </section>
 
       <section className="border-t border-zinc-800/80 pb-24 pt-16">
