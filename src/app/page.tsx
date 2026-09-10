@@ -9,7 +9,7 @@ import {
   Shield,
 } from "lucide-react";
 
-/** Chrome Web Store item — live after Public publish. */
+/** Live Chrome Web Store listing. */
 const CHROME_WEB_STORE_URL =
   "https://chromewebstore.google.com/detail/qa-studio-pro/gbecpdccfeemhcnecgodpljiidfdfiem";
 
@@ -84,7 +84,16 @@ export default function HomePage() {
           </Link>
         </div>
         <p className="mt-4 text-xs text-zinc-600">
-          Listing goes live when the Chrome Web Store publish completes.
+          Free on the{" "}
+          <a
+            href={CHROME_WEB_STORE_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-zinc-400 underline-offset-2 hover:text-zinc-200 hover:underline"
+          >
+            Chrome Web Store
+          </a>
+          .
         </p>
       </section>
 
