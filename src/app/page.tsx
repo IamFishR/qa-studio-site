@@ -99,6 +99,34 @@ export default function HomePage() {
 
       <section className="border-t border-zinc-800/80 pb-24 pt-16">
         <h2 className="text-sm font-medium tracking-wide text-zinc-500">
+          How to use
+        </h2>
+        <p className="mt-6 max-w-xl text-base leading-relaxed text-zinc-300">
+          Open any site → press Record → do your normal work → Stop when done.
+          Clicks, typing, nav — everything becomes a step.
+        </p>
+        <ol className="mt-8 max-w-xl space-y-4 text-sm leading-relaxed text-zinc-400">
+          <li className="flex gap-3">
+            <span className="font-medium text-[#FF6A3D]">1</span>
+            <span>Open any site in Chrome.</span>
+          </li>
+          <li className="flex gap-3">
+            <span className="font-medium text-[#FF6A3D]">2</span>
+            <span>Press Record in QA Studio Pro.</span>
+          </li>
+          <li className="flex gap-3">
+            <span className="font-medium text-[#FF6A3D]">3</span>
+            <span>Do your normal work — clicks, typing, navigation.</span>
+          </li>
+          <li className="flex gap-3">
+            <span className="font-medium text-[#FF6A3D]">4</span>
+            <span>Stop when done. Everything you did becomes a step you can replay.</span>
+          </li>
+        </ol>
+      </section>
+
+      <section className="border-t border-zinc-800/80 pb-24 pt-16">
+        <h2 className="text-sm font-medium tracking-wide text-zinc-500">
           What it does
         </h2>
         <ul className="mt-10 space-y-10">
