@@ -33,8 +33,11 @@ export default function SupportPage() {
         Support
       </h1>
       <p className="mt-4 max-w-xl text-sm leading-relaxed text-zinc-400">
-        Need help with QA Studio Pro? Start with the FAQ below, or email us
-        directly.
+        Need help with QA Studio Pro? Start with the questions below, read the{" "}
+        <Link href="/faq" className="text-zinc-200 hover:underline">
+          full FAQ
+        </Link>
+        , or email us directly.
       </p>
 
       <section className="mt-14 space-y-8 border-t border-zinc-800/80 pt-14">
@@ -75,7 +78,11 @@ export default function SupportPage() {
           </a>
         </p>
         <p className="text-sm text-zinc-500">
-          Read the{" "}
+          Product questions:{" "}
+          <Link href="/faq" className="text-zinc-300 hover:underline">
+            FAQ
+          </Link>
+          . Privacy:{" "}
           <Link href="/privacy" className="text-zinc-300 hover:underline">
             privacy policy
           </Link>

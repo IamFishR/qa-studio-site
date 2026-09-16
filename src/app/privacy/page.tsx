@@ -110,6 +110,10 @@ export default function PrivacyPage() {
               thisisganesh353@gmail.com
             </a>
             . See also{" "}
+            <Link href="/faq" className="text-zinc-200 hover:underline">
+              FAQ
+            </Link>{" "}
+            and{" "}
             <Link href="/support" className="text-zinc-200 hover:underline">
               Support
             </Link>
