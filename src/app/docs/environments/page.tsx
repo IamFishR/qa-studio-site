@@ -1,19 +1,24 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Code, DocPage, DocSection } from "@/components/DocPage";
+import { pageMeta } from "@/lib/site";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMeta({
   title: "Environments",
   description:
-    "Switch environments at play time in QA Studio Pro. Reuse the same journey with different variable values — staging vs prod, or alternate configs.",
-};
+    "Switch environments when you press Play in QA Studio Pro. Reuse the same journey with different variable values, such as staging or production.",
+  path: "/docs/environments",
+  ogTitle: "Environments · QA Studio Pro",
+  ogDescription:
+    "Switch environments when you press Play in QA Studio Pro. Reuse the same journey with different variable values, such as staging or production.",
+});
 
 export default function EnvironmentsGuidePage() {
   return (
     <DocPage
       slug="environments"
       title="Environments"
-      lead="Reuse the same flow with different variables. Switch the environment at play time — payment × staging vs prod, or two configs of the same journey."
+      lead="Reuse the same flow with different variables. Choose the environment when you press Play, such as staging versus production, or two configs of the same journey."
     >
       <DocSection title="Same flow, different values">
         <p>
@@ -62,9 +67,8 @@ export default function EnvironmentsGuidePage() {
       <DocSection title="Local only">
         <p>
           Environment names and values sit in IndexedDB with everything else.
-          Switching environment does not talk to our servers — there are none.
-          A prod environment in the extension is still you, in Chrome, hitting
-          the URL you configured.
+          There is no server. A production environment in the extension still
+          runs in your Chrome, against the URL you set.
         </p>
       </DocSection>
     </DocPage>

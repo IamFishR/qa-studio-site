@@ -1,26 +1,31 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { DocPage, DocSection } from "@/components/DocPage";
+import { pageMeta } from "@/lib/site";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMeta({
   title: "Journeys",
   description:
-    "Record one flow per user journey in QA Studio Pro — login, payment, a config change — then compose them into feature suites.",
-};
+    "Record one flow per path in QA Studio Pro, such as login or payment, then group those flows in a folder and run them in order.",
+  path: "/docs/journeys",
+  ogTitle: "Journeys · QA Studio Pro",
+  ogDescription:
+    "Record one flow per path in QA Studio Pro, such as login or payment, then group those flows in a folder and run them in order.",
+});
 
 export default function JourneysGuidePage() {
   return (
     <DocPage
       slug="journeys"
       title="Journeys"
-      lead="Record one flow per user journey. Login is a journey. Payment is a journey. Changing a setting is a journey. Do not record the whole product as one tape."
+      lead="Record one flow per path. Login is a journey. Payment is a journey. Changing a setting is a journey. Do not record the entire product as one long flow."
     >
       <DocSection title="One flow per journey">
         <p>
           A journey is a single path a person takes to get one thing done. Keep
-          the recording to that path. When the path changes, you re-record or
-          edit that flow — not an 80-step mega-script that also logs in, also
-          searches, also checks out.
+          the recording to that path. When the path changes, re-record or edit
+          that flow. Avoid one long script that also logs in, searches, and
+          checks out.
         </p>
         <p>Typical splits:</p>
         <ul className="list-disc space-y-2 pl-5">
@@ -32,12 +37,11 @@ export default function JourneysGuidePage() {
         </ul>
       </DocSection>
 
-      <DocSection title="Why not one giant recording">
+      <DocSection title="Why shorter flows help">
         <p>
-          Giant recordings fail in the middle and waste the rest of the run.
-          They are also harder to reuse: staging vs prod, a different user, a
-          skip-login when you already have a session. Small journeys compose; a
-          blob does not.
+          A long flow that fails halfway still wastes the rest of the run. It
+          is also harder to reuse with a different host, user, or an already
+          open session. Separate journeys can be combined in a folder.
         </p>
       </DocSection>
 
@@ -47,31 +51,34 @@ export default function JourneysGuidePage() {
           <Link href="/docs/folders" className="text-zinc-200 hover:underline">
             folder
           </Link>{" "}
-          and run them in order as a feature suite — login, then payment. Select
-          the set you want; it fail-fasts on the first failure.
+          and run them in order, such as login, then payment. Select the flows
+          you want. If one fails, the later ones do not start.
         </p>
       </DocSection>
 
       <DocSection title="Edit instead of re-recording everything">
         <p>
-          After capture you can change any step: waits, asserts,{" "}
+          After recording, you can change any step, including waits, asserts,
+          and{" "}
           <Link href="/docs/variables" className="text-zinc-200 hover:underline">
             variables
           </Link>
-          . Optional advanced steps: extract, condition, loop, API call, script,
-          network mock, prompt/OTP. Use those when the UI is awkward (a custom
-          widget, an OTP) — not as a reason to turn one journey into a program.
+          . Optional advanced steps are extract, condition, loop, API call,
+          script, network mock, and prompt/OTP. Use those when the UI needs
+          them, such as a custom widget or an OTP. Do not turn one journey into
+          a long program.
         </p>
       </DocSection>
 
-      <DocSection title="What a journey is not">
+      <DocSection title="Where a journey lives">
         <p>
-          This is not a test-management suite, a shared project, or a CI job.
-          A journey is a local flow in Chrome. If you later want it in CI,{" "}
+          A journey is a flow stored in this Chrome browser. It does not run in
+          your build pipeline. If you want a test in your Playwright project,
+          export a{" "}
           <Link href="/docs/export" className="text-zinc-200 hover:underline">
-            export Playwright TypeScript
+            .spec.ts file
           </Link>{" "}
-          and own that file in your repo.
+          and keep that file in your repo. The extension does not talk to CI.
         </p>
       </DocSection>
     </DocPage>

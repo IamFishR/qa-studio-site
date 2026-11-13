@@ -1,19 +1,24 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { pageMeta } from "@/lib/site";
 
-export const metadata: Metadata = {
-  title: "Privacy",
+export const metadata: Metadata = pageMeta({
+  title: "Privacy policy",
   description:
-    "QA Studio Pro privacy policy — local-first, no servers, telemetry, analytics, or AI.",
-};
+    "QA Studio Pro stores flows on your device. No servers, telemetry, analytics, or AI.",
+  path: "/privacy",
+  ogTitle: "QA Studio Pro privacy policy",
+  ogDescription:
+    "QA Studio Pro stores flows on your device. No servers, telemetry, analytics, or AI.",
+});
 
 export default function PrivacyPage() {
   return (
     <article className="mx-auto max-w-3xl px-6 pb-28 pt-16 sm:pt-24">
       <h1 className="text-3xl font-semibold tracking-tight text-white sm:text-4xl">
-        Privacy Policy
+        Privacy policy
       </h1>
-      <p className="mt-3 text-sm text-zinc-500">Last updated: July 10, 2026</p>
+      <p className="mt-3 text-sm text-zinc-500">Last updated: November 14, 2026</p>
 
       <div className="mt-12 space-y-12 text-sm leading-relaxed text-zinc-400">
         <section className="space-y-3">
@@ -81,9 +86,9 @@ export default function PrivacyPage() {
           </h2>
           <p>
             Nothing is transmitted to us. There is no backend for QA Studio Pro,
-            no account system, and no analytics or crash reporting that phones
-            home. If you add API call steps to a flow, those requests go only to
-            the destinations you specify — they are your calls, not ours.
+            no account system, and no analytics or crash reporting that contacts
+            our servers. If you add API call steps to a flow, those requests go
+            only to the destinations you specify. We do not receive them.
           </p>
         </section>
 

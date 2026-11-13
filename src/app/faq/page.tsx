@@ -2,13 +2,17 @@ import type { Metadata } from "next";
 import type { ReactNode } from "react";
 import Link from "next/link";
 import { InstallCta } from "@/components/InstallCta";
-import { CHROME_WEB_STORE_URL, SUPPORT_EMAIL } from "@/lib/site";
+import { CHROME_WEB_STORE_URL, pageMeta, SUPPORT_EMAIL } from "@/lib/site";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMeta({
   title: "FAQ",
   description:
-    "QA Studio Pro FAQ — local-only, no account, Chrome permissions, vs Playwright/Selenium, no AI in v1, and where your data lives.",
-};
+    "QA Studio Pro FAQ. Where data stays, why Chrome shows a debugger banner, and how this differs from Playwright and Selenium.",
+  path: "/faq",
+  ogTitle: "QA Studio Pro FAQ",
+  ogDescription:
+    "Where data stays, why Chrome shows a debugger banner, and how this differs from Playwright and Selenium.",
+});
 
 const faqs: { id: string; q: string; a: ReactNode }[] = [
   {
@@ -90,28 +94,28 @@ const faqs: { id: string; q: string; a: ReactNode }[] = [
           harness first.
         </p>
         <p>
-          It is not a replacement for those tools. No grid, no multi-browser
-          in v1, no CI worker inside the Chrome item. When a journey belongs
-          in your pipeline,{" "}
+          It does not replace those tools. Version 0.1.7 has no grid, no
+          multi-browser runs, and no CI worker inside the Chrome item. If you
+          want a test in your pipeline,{" "}
           <Link href="/docs/export" className="text-zinc-200 hover:underline">
-            export Playwright TypeScript
+            export a Playwright .spec.ts file
           </Link>{" "}
-          and own that file in your repo. Think of the extension as the
-          capture and debug loop; think of Playwright/Selenium as the
-          engineered suite.
+          and keep that file in your repo. Use the extension to record a flow
+          and debug it in Chrome. Use Playwright or Selenium when you want a
+          test suite in your own repo.
         </p>
       </>
     ),
   },
   {
     id: "ai",
-    q: "Does v1 include AI?",
+    q: "Does version 0.1.7 include AI?",
     a: (
       <>
         <p>
-          No. No AI healing, no model that reads your page, no
-          &ldquo;self-fixing&rdquo; selectors. Page content is not sent to any AI service. If AI shows
-          up later, that will be a later release — not this local v1.
+          No. Version 0.1.7 has no AI that reads the page or rewrites
+          selectors. Page content is not sent to any AI service. A later
+          release might add AI. This one does not.
         </p>
       </>
     ),
@@ -122,10 +126,10 @@ const faqs: { id: string; q: string; a: ReactNode }[] = [
     a: (
       <>
         <p>
-          Not in v1. The extension is free on the Chrome Web Store. Paid
-          plans, seats, shared projects, and cloud sync are post-v1 and are
-          not part of this release. Do not expect a billing page or an org
-          switcher in the extension today.
+          Not in version 0.1.7. The extension is free on the Chrome Web Store.
+          Paid plans, seats, shared projects, and cloud sync are not in this
+          release. Version 0.1.7 has no billing page and no organization
+          switcher.
         </p>
       </>
     ),
@@ -152,8 +156,8 @@ const faqs: { id: string; q: string; a: ReactNode }[] = [
         <p>
           Chrome, via the Chrome Web Store listing (Manifest V3). Replay
           depends on Chrome&apos;s debugger API. There is no Safari/Firefox/Edge
-          store listing in v1, and no promise that unpacked loads elsewhere
-          will behave the same.
+          store listing in version 0.1.7, and no promise that unpacked loads
+          elsewhere will behave the same.
         </p>
       </>
     ),
@@ -173,7 +177,7 @@ const faqs: { id: string; q: string; a: ReactNode }[] = [
           >
             Chrome Web Store
           </a>
-          . No trial clock and no account gate.
+          . There is no trial period and no account.
         </p>
       </>
     ),
@@ -210,15 +214,18 @@ export default function FaqPage() {
         FAQ
       </p>
       <h1 className="text-3xl font-semibold tracking-tight text-white sm:text-4xl">
-        Questions
+        FAQ
       </h1>
       <p className="mt-4 max-w-xl text-sm leading-relaxed text-zinc-400">
-        Short answers for a local-first Chrome extension. If something still
-        looks wrong,{" "}
-        <Link href="/support" className="text-zinc-200 hover:underline">
-          support
-        </Link>{" "}
-        is email — not a ticket portal.
+        Answers about how the extension works and where data stays. If you
+        still need help, email{" "}
+        <a
+          href={`mailto:${SUPPORT_EMAIL}`}
+          className="text-zinc-200 hover:underline"
+        >
+          {SUPPORT_EMAIL}
+        </a>
+        . There is no ticket portal.
       </p>
 
       <ul className="mt-14 space-y-12 border-t border-zinc-800/80 pt-14">

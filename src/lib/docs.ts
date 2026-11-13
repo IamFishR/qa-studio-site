@@ -4,7 +4,7 @@ export const GUIDES = [
     href: "/docs/record",
     title: "Record",
     summary:
-      "Capture clicks, typing, and navigation as structured steps — no selectors to write.",
+      "Records clicks, typing, and navigation as steps. You do not write selectors.",
   },
   {
     slug: "variables",
@@ -17,22 +17,21 @@ export const GUIDES = [
     slug: "journeys",
     href: "/docs/journeys",
     title: "Journeys",
-    summary:
-      "One flow per user journey — login, payment, a config change — not one giant recording.",
+    summary: "One flow per path, such as login or payment.",
   },
   {
     slug: "folders",
     href: "/docs/folders",
     title: "Folders",
     summary:
-      "Group related flows and run them in order as a feature suite. Fail-fast.",
+      "Group related flows and run them in order. If one flow fails, the later ones do not start.",
   },
   {
     slug: "environments",
     href: "/docs/environments",
     title: "Environments",
     summary:
-      "Replay the same flow with different variable values — staging vs prod, or alternate configs.",
+      "Play the same flow with different variable values, such as staging or production.",
   },
   {
     slug: "replay",
@@ -46,7 +45,7 @@ export const GUIDES = [
     href: "/docs/export",
     title: "Export",
     summary:
-      "Export a flow as JSON, YAML, or Playwright TypeScript. You choose when a file leaves the browser.",
+      "Export a flow as JSON, YAML, or a Playwright .spec.ts file. The file leaves the browser when you press Export.",
   },
 ] as const;
 

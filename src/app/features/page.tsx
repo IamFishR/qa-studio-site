@@ -10,12 +10,17 @@ import {
   Shield,
 } from "lucide-react";
 import { InstallCta } from "@/components/InstallCta";
+import { pageMeta } from "@/lib/site";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMeta({
   title: "Features",
   description:
-    "Modular journeys, folders as feature suites, environments, local record/replay, and privacy — QA Studio Pro is a Chrome extension. No account, no server, no AI in v1.",
-};
+    "Record and play flows in Chrome. Group them in folders, switch variable sets when you press Play, and export JSON, YAML, or a Playwright .spec.ts file. Version 0.1.7.",
+  path: "/features",
+  ogTitle: "Features of QA Studio Pro",
+  ogDescription:
+    "Journeys, folders, environments, and Playwright export in a Chrome side panel. Version 0.1.7.",
+});
 
 const sections: {
   id: string;
@@ -32,14 +37,14 @@ const sections: {
     body: (
       <>
         <p>
-          A journey is one user path, recorded as one flow. Login, payment, a
-          config change — each is its own recording. You compose them later.
-          You do not capture &ldquo;the whole app&rdquo; as a single tape.
+          A journey is one path, saved as one flow. Record login separately
+          from payment or a settings change. You can run those flows together
+          later from a folder.
         </p>
         <p>
-          Small flows are the product idea. They replay more reliably, they
-          swap when staging and prod differ, and when one step breaks you edit
-          that journey instead of throwing away an 80-step script.
+          Shorter flows are easier to edit. If a step fails, you change that
+          journey. To use a different host or user, switch the environment
+          instead of recording the path again.
         </p>
         <p>
           After capture you can edit steps, add waits and asserts, and insert
@@ -57,9 +62,8 @@ const sections: {
     body: (
       <>
         <p>
-          A folder is a feature suite. Group the journeys that belong together
-          — login, then add to cart, then pay — and run a selected set in
-          order.
+          A folder groups related journeys, such as login, add to cart, and
+          pay. Select which ones to run. They run in order.
         </p>
         <p>
           Runs are fail-fast. If login fails, payment does not start. You
@@ -67,9 +71,8 @@ const sections: {
           the session never existed.
         </p>
         <p>
-          Folders are local, like everything else. They are not shared
-          projects, not a test-management workspace, and not a cloud run
-          history.
+          Folders stay in this browser. They are not shared with a team or
+          stored on a server.
         </p>
       </>
     ),
@@ -82,17 +85,22 @@ const sections: {
     body: (
       <>
         <p>
-          Keep the flow. Change the data. An environment is a named set of
-          variable values you pick at play time —{" "}
-          <Link href="/docs/variables" className="text-zinc-200 hover:underline">
-            variables
-          </Link>{" "}
-          such as {"{BASE_URL}"}, {"{USERNAME}"}, {"{PASSWORD}"}.
+          The steps stay the same. The variable values change when you pick an
+          environment and press Play.
         </p>
         <p>
-          Use that for staging vs prod, two test users, or a config matrix
-          (payment × currency, locale, flag). Do not duplicate the whole
-          recording just to change a host name.
+          An environment is a named set of{" "}
+          <Link href="/docs/variables" className="text-zinc-200 hover:underline">
+            variable
+          </Link>{" "}
+          values, such as {"{BASE_URL}"}, {"{USERNAME}"}, and {"{PASSWORD}"},
+          that you choose when you press Play.
+        </p>
+        <p>
+          Use this when the same flow should run against staging and
+          production, or with two test users, or with a different currency or
+          locale. You do not need to record the flow again just to change the
+          host name.
         </p>
         <p>
           Sensitive fields are masked at capture by default. You fill values
@@ -109,10 +117,11 @@ const sections: {
     body: (
       <>
         <p>
-          Press Record and use the page. Clicks (left, double, right, middle),
-          typing (including contenteditable), file uploads, drag-and-drop,
-          hovers, keypresses, dialogs, scroll, and navigations — including SPA
-          soft navigations — become structured steps. No selectors to write.
+          Press Record and use the page. The extension records clicks,
+          including left, double, right, and middle, plus typing, including
+          contenteditable, file uploads, drag and drop, hovers, keypresses,
+          dialogs, scroll, and navigations, including in-page SPA
+          navigations. You do not write selectors.
         </p>
         <p>
           Play uses the Chrome DevTools Protocol to fire real input events. It
@@ -121,12 +130,12 @@ const sections: {
         </p>
         <p>
           Debug in the extension: step status, failure screenshots, run
-          history (newest 50). Then{" "}
+          history (newest 50). When you want a file, press{" "}
           <Link href="/docs/export" className="text-zinc-200 hover:underline">
-            export
+            Export
           </Link>{" "}
-          JSON, YAML, or Playwright TypeScript if you want a file — that
-          handoff is explicit.{" "}
+          and choose JSON, YAML, or Playwright TypeScript (.spec.ts). Chrome
+          downloads the file. Nothing is uploaded.{" "}
           <Link href="/docs/replay" className="text-zinc-200 hover:underline">
             Replay & debug
           </Link>
@@ -143,7 +152,7 @@ const sections: {
     body: (
       <>
         <p>
-          No account. No server. No telemetry. No AI in v1. Flows, variables,
+          No account. No server. No telemetry. No AI in version 0.1.7. Flows, variables,
           run results, and failure screenshots stay in IndexedDB in this
           browser.
         </p>
@@ -181,9 +190,8 @@ export default function FeaturesPage() {
         Features
       </h1>
       <p className="mt-4 max-w-xl text-sm leading-relaxed text-zinc-400">
-        Local-first record and replay for people who want a real-site flow
-        without writing a test harness first. Manifest V3. This browser. No
-        account.
+        A Manifest V3 Chrome extension that records a flow on a live site and
+        plays it back in this browser. You do not need an account.
       </p>
 
       <ul className="mt-14 space-y-16 border-t border-zinc-800/80 pt-14">
@@ -218,12 +226,13 @@ export default function FeaturesPage() {
       </ul>
 
       <section className="mt-16 space-y-3 border-t border-zinc-800/80 pt-14">
-        <h2 className="text-base font-medium text-zinc-100">What v1 is not</h2>
+        <h2 className="text-base font-medium text-zinc-100">
+          What this version does not include
+        </h2>
         <p className="text-sm leading-relaxed text-zinc-400">
-          Not a test-management SaaS. Not open-source Playwright reporting.
-          Not AI-powered healing. Not a paid cloud with seats and projects.
-          Those are different products. QA Studio Pro v1 is the Chrome
-          extension: record, replay, organize, export — on your machine.
+          Version 0.1.7 does not include a test-management product, cloud
+          sync, paid seats, or AI that rewrites selectors. It records, plays,
+          organizes, and exports flows in this browser.
         </p>
         <p className="text-sm leading-relaxed text-zinc-400">
           Honest limits still apply: closed shadow DOM can fail on some hosts,

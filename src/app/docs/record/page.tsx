@@ -2,12 +2,17 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Code, DocPage, DocSection } from "@/components/DocPage";
 import { Steps } from "@/components/Steps";
+import { pageMeta } from "@/lib/site";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMeta({
   title: "Record",
   description:
-    "How to record browser flows in QA Studio Pro — clicks, typing, navigation, and more, as structured steps. Local-only Chrome extension.",
-};
+    "How to record browser flows in QA Studio Pro, including clicks, typing, and navigation, as steps you can play back.",
+  path: "/docs/record",
+  ogTitle: "Record · QA Studio Pro",
+  ogDescription:
+    "How to record browser flows in QA Studio Pro, including clicks, typing, and navigation, as steps you can play back.",
+});
 
 export default function RecordGuidePage() {
   return (
@@ -21,7 +26,7 @@ export default function RecordGuidePage() {
           items={[
             "Open the site in Chrome. Recording cannot attach to chrome:// pages or the Chrome Web Store.",
             "Open QA Studio Pro and press Record.",
-            "Do the journey: click, type, navigate, upload, drag, dismiss a dialog — whatever the flow actually is.",
+            "Click, type, navigate, upload a file, drag, or dismiss a dialog, depending on the path you are recording.",
             "Press Stop. That session is now a flow you can edit, replay, or export.",
           ]}
         />
@@ -29,7 +34,7 @@ export default function RecordGuidePage() {
 
       <DocSection title="What gets captured">
         <ul className="list-disc space-y-2 pl-5">
-          <li>Clicks — left, double, right, middle, with optional offsets</li>
+          <li>Clicks: left, double, right, middle, with optional offsets</li>
           <li>Typing, including contenteditable</li>
           <li>File uploads</li>
           <li>Drag and drop</li>
@@ -60,13 +65,13 @@ export default function RecordGuidePage() {
 
       <DocSection title="After you stop">
         <p>
-          Edit any step. Add waits, asserts, and variables. Optional advanced
-          steps you can insert: extract, condition, loop, API call, script,
-          network mock, prompt/OTP. Keep the recording to{" "}
+          Edit any step. Add waits, asserts, and variables. You can also insert
+          extract, condition, loop, API call, script, network mock, or prompt/OTP
+          steps when you need them. Keep the recording to{" "}
           <Link href="/docs/journeys" className="text-zinc-200 hover:underline">
             one journey
           </Link>
-          . A smaller flow is easier to replay and cheaper to fix.
+          . A shorter flow is easier to play back and to edit when a step fails.
         </p>
       </DocSection>
 
@@ -74,11 +79,12 @@ export default function RecordGuidePage() {
         <p>
           Chrome shows a debugger banner while the extension attaches the
           debugger API. That API is how record and replay fire real input
-          events. The banner is expected — not a malware warning. See{" "}
+          events. The banner is normal for this extension. It is not a malware
+          warning. See the{" "}
           <Link href="/faq#permissions" className="text-zinc-200 hover:underline">
-            permissions
+            permissions FAQ
           </Link>{" "}
-          if you want the longer version.
+          for more detail.
         </p>
       </DocSection>
 

@@ -1,21 +1,27 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { DocPage, DocSection } from "@/components/DocPage";
+import { ScreenshotPlaceholder } from "@/components/ScreenshotPlaceholder";
+import { pageMeta } from "@/lib/site";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMeta({
   title: "Folders",
   description:
-    "Use folders in QA Studio Pro as feature suites — group journeys and run a selected set in order, fail-fast.",
-};
+    "Use folders in QA Studio Pro to group journeys and run a selected set in order. If one flow fails, the later ones do not start.",
+  path: "/docs/folders",
+  ogTitle: "Folders · QA Studio Pro",
+  ogDescription:
+    "Use folders in QA Studio Pro to group journeys and run a selected set in order. If one flow fails, the later ones do not start.",
+});
 
 export default function FoldersGuidePage() {
   return (
     <DocPage
       slug="folders"
       title="Folders"
-      lead="A folder is a feature suite: related journeys grouped so you can run them in order. Select the set, play, fail-fast."
+      lead="A folder groups related journeys so you can run them in order. Select which flows to include, then press Play. If one fails, the later ones do not start."
     >
-      <DocSection title="Folders as feature suites">
+      <DocSection title="How to group journeys">
         <p>
           Name a folder after the feature, not after a date or a person.
           Example: a <strong className="font-medium text-zinc-200">Checkout</strong>{" "}
@@ -31,33 +37,32 @@ export default function FoldersGuidePage() {
           <Link href="/docs/journeys" className="text-zinc-200 hover:underline">
             journey
           </Link>
-          . The folder is how you say &ldquo;this is the suite.&rdquo;
+          . The folder only groups them for a run.
         </p>
       </DocSection>
 
-      <DocSection title="Select and run, fail-fast">
+      <DocSection title="Select and run">
         <p>
           Pick the flows to run. They execute in order. If login fails, payment
           does not start. That is the point of fail-fast: you debug the first
           break instead of watching later journeys fail because the session
           never existed.
         </p>
+        <ScreenshotPlaceholder caption="If one flow in a folder fails, the later flows do not start." />
       </DocSection>
 
       <DocSection title="What to put together">
         <p>
-          Group journeys that share a setup and a product surface. Keep a smoke
-          path short. Keep an edge-case journey out of the happy-path folder if
-          you do not want it in every run.
+          Group journeys that share a setup, such as a login and the pages that
+          follow it. Keep a short smoke path in one folder. Keep an edge-case
+          journey out of that folder if you do not want it in every run.
         </p>
       </DocSection>
 
       <DocSection title="Still local">
         <p>
           Folders live in this browser with the flows. There is no shared
-          project, no role-based access, no cloud run. If you need a team
-          test-management tool, this extension is not that — and does not try
-          to be.
+          project, role-based access, or cloud run history.
         </p>
       </DocSection>
     </DocPage>

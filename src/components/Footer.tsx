@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { SITE_VERSION } from "@/lib/site";
 
 const links = [
   { href: "/features", label: "Features" },
@@ -12,7 +13,7 @@ export function Footer() {
   return (
     <footer className="border-t border-zinc-800/80">
       <div className="mx-auto flex max-w-3xl flex-col gap-3 px-6 py-8 text-sm text-zinc-500 sm:flex-row sm:items-center sm:justify-between">
-        <p>© {new Date().getFullYear()} QA Studio Pro</p>
+        <p>© 2026 QA Studio Pro. Version {SITE_VERSION}.</p>
         <div className="flex flex-wrap gap-x-5 gap-y-2">
           {links.map((link) => (
             <Link

@@ -1,16 +1,22 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { CircleHelp, Mail } from "lucide-react";
+import { pageMeta, SUPPORT_EMAIL } from "@/lib/site";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMeta({
   title: "Support",
-  description: "Get help with QA Studio Pro — FAQ and contact.",
-};
+  description:
+    "Help for QA Studio Pro, including common questions and the support email.",
+  path: "/support",
+  ogTitle: "QA Studio Pro support",
+  ogDescription:
+    "Common questions and the support email for QA Studio Pro.",
+});
 
 const faqs = [
   {
     q: "Why do I see a debugger banner?",
-    a: "Chrome shows a debugger banner when an extension attaches the debugger API (used for reliable recording/replay). This is expected behavior for QA Studio Pro, not a malware warning.",
+    a: "Chrome shows a debugger banner when an extension attaches the debugger API, which this extension uses for record and play. This is normal behavior for QA Studio Pro. It is not a malware warning.",
   },
   {
     q: "How do I load an unpacked build?",
@@ -22,7 +28,7 @@ const faqs = [
   },
   {
     q: "Should I record my whole checkout as one flow?",
-    a: "Prefer one flow per journey — login, payment, a config change — then put them in a folder and run them in order as a feature suite. Use environments or variables for the same flow under different configs.",
+    a: "Prefer one flow per path, such as login, payment, or a settings change. Put those flows in a folder and run them in order. Use environments or variables when the same flow needs different URLs or credentials.",
   },
 ];
 
@@ -33,11 +39,18 @@ export default function SupportPage() {
         Support
       </h1>
       <p className="mt-4 max-w-xl text-sm leading-relaxed text-zinc-400">
-        Need help with QA Studio Pro? Start with the questions below, read the{" "}
+        Read the questions below, see the{" "}
         <Link href="/faq" className="text-zinc-200 hover:underline">
           full FAQ
         </Link>
-        , or email us directly.
+        , or email{" "}
+        <a
+          href={`mailto:${SUPPORT_EMAIL}`}
+          className="text-zinc-200 hover:underline"
+        >
+          {SUPPORT_EMAIL}
+        </a>
+        .
       </p>
 
       <section className="mt-14 space-y-8 border-t border-zinc-800/80 pt-14">
@@ -71,10 +84,10 @@ export default function SupportPage() {
         <p className="text-sm text-zinc-400">
           Email{" "}
           <a
-            href="mailto:thisisganesh353@gmail.com"
+            href={`mailto:${SUPPORT_EMAIL}`}
             className="text-[#FF6A3D] hover:underline"
           >
-            thisisganesh353@gmail.com
+            {SUPPORT_EMAIL}
           </a>
         </p>
         <p className="text-sm text-zinc-500">

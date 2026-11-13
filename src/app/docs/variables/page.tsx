@@ -1,12 +1,17 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Code, DocPage, DocSection } from "@/components/DocPage";
+import { pageMeta } from "@/lib/site";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMeta({
   title: "Variables",
   description:
     "Use named variables like {BASE_URL} and {PASSWORD} in QA Studio Pro. Sensitive fields are masked at capture. Values stay in this browser.",
-};
+  path: "/docs/variables",
+  ogTitle: "Variables · QA Studio Pro",
+  ogDescription:
+    "Use named variables like {BASE_URL} and {PASSWORD} in QA Studio Pro. Sensitive fields are masked at capture. Values stay in this browser.",
+});
 
 export default function VariablesGuidePage() {
   return (
@@ -17,10 +22,10 @@ export default function VariablesGuidePage() {
     >
       <DocSection title="Named placeholders">
         <p>
-          A variable is a name you reuse in steps. Typical ones:{" "}
-          <Code>{"{BASE_URL}"}</Code>, <Code>{"{USERNAME}"}</Code>,{" "}
-          <Code>{"{PASSWORD}"}</Code> — plus whatever your product actually
-          needs (an org id, a locale, a feature flag).
+          A variable is a name you reuse in steps. Common names are{" "}
+          <Code>{"{BASE_URL}"}</Code>, <Code>{"{USERNAME}"}</Code>, and{" "}
+          <Code>{"{PASSWORD}"}</Code>. Add others your product needs, such as
+          an org id, a locale, or a feature flag.
         </p>
         <p>
           Use variables for anything that should change when you switch{" "}
@@ -39,9 +44,9 @@ export default function VariablesGuidePage() {
           replay.
         </p>
         <p>
-          That is a local convenience, not a vault. Anyone with this Chrome
-          profile can open the extension and see the values you stored. Treat
-          the profile like you would a password manager on this machine.
+          Values stay in this Chrome profile. Anyone who can open this profile
+          can open the extension and see them. Treat the profile the way you
+          would a password manager on this machine.
         </p>
       </DocSection>
 
@@ -68,12 +73,12 @@ export default function VariablesGuidePage() {
 
       <DocSection title="Exporting">
         <p>
-          Export is explicit — JSON, YAML, or Playwright TypeScript. If a file
-          includes credentials you stored as variable values, treat that file as
-          sensitive. QA Studio Pro does not upload it; you decide where it goes.
-          See{" "}
+          Export is a file you choose: JSON, YAML, or Playwright TypeScript
+          (.spec.ts). If that file includes credentials you stored as variable
+          values, treat the file as sensitive. QA Studio Pro does not upload
+          it. You decide where it goes. See the{" "}
           <Link href="/docs/export" className="text-zinc-200 hover:underline">
-            export
+            export guide
           </Link>
           .
         </p>

@@ -9,8 +9,7 @@ export function InstallCta({
   return (
     <section className="border-t border-zinc-800/80 pt-14">
       <p className="max-w-xl text-sm leading-relaxed text-zinc-400">
-        QA Studio Pro is free on the Chrome Web Store. No account, no server, no
-        AI in v1.
+        QA Studio Pro is free on the Chrome Web Store.
       </p>
       <div className="mt-6 flex flex-wrap gap-3">
         <AddToChrome />

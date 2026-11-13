@@ -1,26 +1,29 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { DocPage, DocSection } from "@/components/DocPage";
+import { ScreenshotPlaceholder } from "@/components/ScreenshotPlaceholder";
 import { Steps } from "@/components/Steps";
+import { pageMeta } from "@/lib/site";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMeta({
   title: "Replay & debug",
   description:
-    "Replay QA Studio Pro flows locally with Chrome DevTools Protocol input, step status, and failure screenshots. Debug in the extension — no cloud.",
-};
+    "Play QA Studio Pro flows in this browser with Chrome DevTools Protocol input, step status, and failure screenshots. Debug in the extension. There is no cloud.",
+  path: "/docs/replay",
+  ogTitle: "Replay & debug · QA Studio Pro",
+  ogDescription:
+    "Play QA Studio Pro flows in this browser with Chrome DevTools Protocol input, step status, and failure screenshots. Debug in the extension. There is no cloud.",
+});
 
 export default function ReplayGuidePage() {
   return (
     <DocPage
       slug="replay"
       title="Replay & debug"
-      lead="Play a flow with one click. Replay uses the Chrome DevTools Protocol to fire real input events, then shows you step status and a screenshot if something fails."
+      lead="Press Play to run a flow. Replay uses the Chrome DevTools Protocol to fire real input events, then shows each step's status and a screenshot if a step fails."
     >
       <DocSection title="How replay works">
-        <p>
-          Play runs in this browser, against the live page. It is not a
-          headless grid and not a cloud runner.
-        </p>
+        <p>Play runs in this browser, against the live page.</p>
         <ul className="list-disc space-y-2 pl-5">
           <li>Real input events via the Chrome DevTools Protocol</li>
           <li>Retries when selector resolution is flaky</li>
@@ -31,7 +34,7 @@ export default function ReplayGuidePage() {
         </ul>
       </DocSection>
 
-      <DocSection title="A debug loop">
+      <DocSection title="How to debug a failure">
         <Steps
           items={[
             "Play the journey (or the selected folder).",
@@ -44,14 +47,17 @@ export default function ReplayGuidePage() {
 
       <DocSection title="What you will see">
         <p>
-          Each step gets a clear status as it runs. Failures capture a
-          screenshot locally. Chrome will show a debugger banner while the
-          debugger API is attached; that is expected. See{" "}
+          Each step shows its status as it runs. If a step fails, you see the
+          error text and a screenshot saved on this machine. An empty flow
+          shows a clear message instead of failing silently. Chrome shows a
+          debugger banner while the debugger API is attached. That is normal.
+          See the{" "}
           <Link href="/faq#permissions" className="text-zinc-200 hover:underline">
-            permissions
+            permissions FAQ
           </Link>
           .
         </p>
+        <ScreenshotPlaceholder caption="A failed step shows the error text and a screenshot saved on this machine." />
       </DocSection>
 
       <DocSection title="Before you hit Play">
@@ -88,8 +94,8 @@ export default function ReplayGuidePage() {
             Debugger cannot attach to chrome:// or the Chrome Web Store.
           </li>
           <li>
-            This is Chrome-only in v1. It is not Playwright, Selenium, or a CI
-            worker —{" "}
+            Version 0.1.7 runs in Chrome only. It does not replace Playwright
+            or Selenium, and it does not run your CI jobs. See{" "}
             <Link href="/faq#playwright" className="text-zinc-200 hover:underline">
               how they differ
             </Link>
